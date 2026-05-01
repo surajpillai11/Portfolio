@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Suraj Pillai</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Custom Cursor ── -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a href="#hero" class="nav-logo">Port<span>folio</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-admin-area">
+      <button class="btn-admin-login" id="btn-admin-login" title="Admin Login">🔒</button>
+      <button class="btn-admin-logout" id="btn-admin-logout" title="Exit Admin Mode" style="display:none;">🔓 Exit Admin</button>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ════════════════════════════════════════════
+       HERO SECTION
+  ════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="hero-content">
+      <!-- Left: Text -->
+      <div class="hero-text">
+        <div class="hero-eyebrow">✦ Welcome to my portfolio</div>
+        <h1 class="hero-name">
+          <span id="hero-name">Your Name</span>
+          <strong style="font-size:0.55em; display:block; margin-top:4px;" id="hero-title">Software Engineer &amp; Creative Developer</strong>
+        </h1>
+        <p class="hero-bio" id="hero-bio">A passionate developer with a love for crafting elegant digital experiences.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get in Touch →</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+          <button class="btn btn-ghost admin-only" id="btn-edit-profile" style="display:none;">✏️ Edit Profile</button>
+        </div>
+      </div>
+
+      <!-- Right: Photo -->
+      <div class="hero-photo-wrap">
+        <div class="photo-frame">
+          <div class="photo-inner">
+            <img id="hero-photo-img" src="" alt="Profile Photo" style="display:none;" />
+            <div class="photo-placeholder" id="hero-photo-placeholder">
+              <span class="icon">👤</span>
+              <p>Click the ✏️ button<br>to upload your photo</p>
+            </div>
+          </div>
+          <!-- Upload button -->
+          <button class="photo-upload-btn admin-only" id="photo-upload-btn" title="Upload Photo" style="display:none;">📷</button>
+          <input type="file" id="photo-file-input" accept="image/*" style="display:none;" />
+          <!-- Status badge -->
+          <div class="photo-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text" id="hero-status">Open to Opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       STATS STRIP
+  ════════════════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num" id="stat-exp">2+</div>
+          <div class="stat-label">Experiences</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-num" id="stat-projects">2+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-num" id="stat-skills">8+</div>
+          <div class="stat-label">Skills</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-num" id="stat-certs">3</div>
+          <div class="stat-label">Certificates</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       ABOUT SECTION
+  ════════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">01 — About Me</div>
+        <h2 class="section-title">The Story <em>Behind</em> the Code</h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Left: Bio + Qualifications -->
+        <div class="about-text">
+          <p id="about-bio">A passionate developer with a love for crafting elegant digital experiences.</p>
+          <p id="about-bio2">When I'm not coding, you'll find me exploring new technologies and contributing to open-source.</p>
+
+          <div class="about-qual">
+            <div class="section-label" style="margin-bottom:16px;">🎓 Education</div>
+            <div id="qualifications-list">
+              <!-- Rendered by JS -->
+            </div>
+            <button class="btn btn-ghost btn-sm edit-about-btn admin-only" id="btn-add-qual" style="display:none;">+ Add Qualification</button>
+          </div>
+        </div>
+
+        <!-- Right: Info cards -->
+        <div class="about-info-panel reveal">
+          <div class="info-card">
+            <div class="info-card-label">📧 Email</div>
+            <div class="info-card-value" id="about-email-val">you@example.com</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">📍 Location</div>
+            <div class="info-card-value" id="about-location-val">Pune, Maharashtra, India</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">💼 LinkedIn</div>
+            <div class="info-card-value" id="about-linkedin-val">linkedin.com/in/yourprofile</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">🟢 Status</div>
+            <div class="info-card-value" id="about-status-val">Open to Opportunities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       SKILLS SECTION
+  ════════════════════════════════════════════ -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">02 — Skills</div>
+        <h2 class="section-title">Tools of the <em>Trade</em></h2>
+      </div>
+
+      <div class="skills-toolbar">
+        <div class="skill-categories" id="skill-categories">
+          <!-- Rendered by JS -->
+        </div>
+        <button class="btn btn-outline btn-sm admin-only" id="btn-add-skill" style="display:none;">+ Add Skill</button>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       EXPERIENCE SECTION
+  ════════════════════════════════════════════ -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">03 — Experience</div>
+        <h2 class="section-title">Where I've <em>Worked</em></h2>
+      </div>
+
+      <div class="exp-toolbar">
+        <span style="font-size:0.85rem;color:var(--text-muted);">My professional journey</span>
+        <button class="btn btn-outline btn-sm admin-only" id="btn-add-exp" style="display:none;">+ Add Experience</button>
+      </div>
+
+      <div class="exp-timeline" id="exp-timeline">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       PROJECTS SECTION
+  ════════════════════════════════════════════ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">04 — Projects</div>
+        <h2 class="section-title">Things I've <em>Built</em></h2>
+      </div>
+
+      <div class="proj-toolbar">
+        <span style="font-size:0.85rem;color:var(--text-muted);">A selection of my recent work</span>
+        <button class="btn btn-outline btn-sm admin-only" id="btn-add-project" style="display:none;">+ Add Project</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       CERTIFICATES SECTION
+  ════════════════════════════════════════════ -->
+  <section id="certificates">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">05 — Certificates</div>
+        <h2 class="section-title">Learning &amp; <em>Credentials</em></h2>
+      </div>
+
+      <div class="certs-toolbar">
+        <span style="font-size:0.85rem;color:var(--text-muted);">My verified certifications</span>
+        <button class="btn btn-outline btn-sm admin-only" id="btn-add-cert" style="display:none;">+ Add Certificate</button>
+      </div>
+
+      <div class="certs-grid" id="certs-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       CONTACT SECTION
+  ════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">06 — Contact</div>
+        <h2 class="section-title">Let's <em>Connect</em></h2>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Left: Contact info -->
+        <div class="contact-info reveal">
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value" id="contact-email">you@example.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value" id="contact-phone">+91 9876543210</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-value" id="contact-location">Pune, Maharashtra, India</div>
+            </div>
+          </div>
+
+          <!-- Social links -->
+          <div class="contact-social">
+            <a href="#" class="social-link" id="contact-linkedin-link" target="_blank">
+              🔗 <span>LinkedIn</span>
+            </a>
+            <a href="#" class="social-link" id="contact-github-link" target="_blank">
+              🐙 <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div class="contact-form-card reveal">
+          <h3>Send a Message</h3>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="form-name">Name</label>
+              <input type="text" id="form-name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="form-email">Email</label>
+              <input type="email" id="form-email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="form-subject">Subject</label>
+              <select id="form-subject">
+                <option value="">Select a topic</option>
+                <option value="opportunity">Job Opportunity</option>
+                <option value="freelance">Freelance Project</option>
+                <option value="collaboration">Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <textarea id="form-message" placeholder="Your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              Send Message ✦
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2025 <span id="footer-name">Your Name</span>. All rights reserved.</p>
+        <p class="footer-made">Built with ❤️ &amp; ☕ · Dark Luxury Theme</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════
+       TOAST CONTAINER
+  ════════════════════════════════════════════ -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ════════════════════════════════════════════
+       MODALS
+  ════════════════════════════════════════════ -->
+
+  <!-- Edit Profile Modal -->
+  <div class="modal-backdrop" id="modal-profile">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Profile</h3>
+        <button class="modal-close" onclick="closeModal('modal-profile')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="edit-name" placeholder="Your Name" />
+      </div>
+      <div class="form-group">
+        <label>Title / Role</label>
+        <input type="text" id="edit-title" placeholder="Software Engineer & Creative Developer" />
+      </div>
+      <div class="form-group">
+        <label>Bio (short)</label>
+        <textarea id="edit-bio" placeholder="Short bio..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Bio (extended)</label>
+        <textarea id="edit-bio2" placeholder="More about you..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="edit-email" placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" id="edit-phone" placeholder="+91 9876543210" />
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" id="edit-location" placeholder="Pune, India" />
+      </div>
+      <div class="form-group">
+        <label>LinkedIn (without https://)</label>
+        <input type="text" id="edit-linkedin" placeholder="linkedin.com/in/yourprofile" />
+      </div>
+      <div class="form-group">
+        <label>GitHub (without https://)</label>
+        <input type="text" id="edit-github" placeholder="github.com/yourusername" />
+      </div>
+      <div class="form-group">
+        <label>Status Badge</label>
+        <input type="text" id="edit-status" placeholder="Open to Opportunities" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-profile')">Cancel</button>
+        <button class="btn btn-primary" id="save-profile">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Qualification Modal -->
+  <div class="modal-backdrop" id="modal-qual">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-qual-title">Add Qualification</h3>
+        <button class="modal-close" onclick="closeModal('modal-qual')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Year</label>
+        <input type="text" id="qual-year" placeholder="2024" />
+      </div>
+      <div class="form-group">
+        <label>Degree / Course</label>
+        <input type="text" id="qual-degree" placeholder="B.Tech Computer Science" />
+      </div>
+      <div class="form-group">
+        <label>Institution</label>
+        <input type="text" id="qual-institution" placeholder="XYZ University" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-qual')">Cancel</button>
+        <button class="btn btn-primary" id="save-qual">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Skill Modal -->
+  <div class="modal-backdrop" id="modal-skill">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-skill-title">Add Skill</h3>
+        <button class="modal-close" onclick="closeModal('modal-skill')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Icon (emoji)</label>
+        <input type="text" id="skill-icon" placeholder="⚡" />
+      </div>
+      <div class="form-group">
+        <label>Skill Name</label>
+        <input type="text" id="skill-name-input" placeholder="JavaScript" />
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" id="skill-category-input" placeholder="Frontend / Backend / Tools..." />
+      </div>
+      <div class="form-group">
+        <label>Proficiency Level — <span id="skill-level-display">75%</span></label>
+        <input type="range" id="skill-level-input" min="10" max="100" value="75"
+          style="width:100%;accent-color:var(--gold);" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-skill')">Cancel</button>
+        <button class="btn btn-primary" id="save-skill">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Experience Modal -->
+  <div class="modal-backdrop" id="modal-exp">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-exp-title">Add Experience</h3>
+        <button class="modal-close" onclick="closeModal('modal-exp')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Role / Position</label>
+        <input type="text" id="exp-role" placeholder="Software Developer" />
+      </div>
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" id="exp-company" placeholder="Tech Solutions Pvt. Ltd." />
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" id="exp-location" placeholder="Pune, India" />
+      </div>
+      <div class="form-group">
+        <label>Period</label>
+        <input type="text" id="exp-period" placeholder="Jan 2024 – Present" />
+      </div>
+      <div class="form-group">
+        <label>Type</label>
+        <select id="exp-type">
+          <option value="Full-time">Full-time</option>
+          <option value="Internship">Internship</option>
+          <option value="Part-time">Part-time</option>
+          <option value="Freelance">Freelance</option>
+          <option value="Contract">Contract</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="exp-desc" placeholder="Describe your responsibilities and achievements..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Tags (comma-separated)</label>
+        <input type="text" id="exp-tags" placeholder="React, Node.js, AWS" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-exp')">Cancel</button>
+        <button class="btn btn-primary" id="save-exp">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Project Modal -->
+  <div class="modal-backdrop" id="modal-proj">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-proj-title">Add Project</h3>
+        <button class="modal-close" onclick="closeModal('modal-proj')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Icon (emoji)</label>
+        <input type="text" id="proj-icon" placeholder="🚀" />
+      </div>
+      <div class="form-group">
+        <label>Project Name</label>
+        <input type="text" id="proj-name" placeholder="My Awesome App" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="proj-desc" placeholder="Brief description of what the project does..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Tags (comma-separated)</label>
+        <input type="text" id="proj-tags" placeholder="React, Node.js, MongoDB" />
+      </div>
+      <div class="form-group">
+        <label>GitHub URL</label>
+        <input type="url" id="proj-github" placeholder="https://github.com/..." />
+      </div>
+      <div class="form-group">
+        <label>Live Demo URL</label>
+        <input type="url" id="proj-live" placeholder="https://myapp.com" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-proj')">Cancel</button>
+        <button class="btn btn-primary" id="save-proj">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Certificate Modal -->
+  <div class="modal-backdrop" id="modal-cert">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-cert-title">Add Certificate</h3>
+        <button class="modal-close" onclick="closeModal('modal-cert')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Icon (emoji)</label>
+        <input type="text" id="cert-icon" placeholder="🏅" />
+      </div>
+      <div class="form-group">
+        <label>Certificate Name</label>
+        <input type="text" id="cert-name" placeholder="AWS Certified Developer" />
+      </div>
+      <div class="form-group">
+        <label>Issuer</label>
+        <input type="text" id="cert-issuer" placeholder="Amazon Web Services" />
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="text" id="cert-date" placeholder="March 2024" />
+      </div>
+      <div class="form-group">
+        <label>Certificate URL (optional)</label>
+        <input type="url" id="cert-link" placeholder="https://credential.link" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-cert')">Cancel</button>
+        <button class="btn btn-primary" id="save-cert">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal-backdrop" id="modal-admin-login">
+    <div class="modal" style="max-width:380px;">
+      <div class="modal-header">
+        <h3 class="modal-title">🔒 Admin Access</h3>
+        <button class="modal-close" onclick="closeModal('modal-admin-login')">✕</button>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;">Enter your admin password to enable editing controls.</p>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="admin-password-input" placeholder="Enter password…" />
+      </div>
+      <div id="admin-login-error" style="color:#e05a7a;font-size:0.78rem;margin-top:-10px;margin-bottom:10px;display:none;">Incorrect password. Try again.</div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('modal-admin-login')">Cancel</button>
+        <button class="btn btn-primary" id="btn-admin-confirm">Unlock ✦</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── JS ── -->
+  <script src="main.js"></script>
+</body>
+</html>
