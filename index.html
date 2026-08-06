@@ -24,7 +24,8 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-admin-area">
-      <button class="btn-admin-login" id="btn-admin-login" title="Admin Login">🔒</button>
+      <!-- Login trigger moved to footer (hidden). This button only appears
+           once you're already logged in, so it's fine for it to be visible here. -->
       <button class="btn-admin-logout" id="btn-admin-logout" title="Exit Admin Mode" style="display:none;">🔓 Exit Admin</button>
     </div>
     <button class="nav-toggle" aria-label="Toggle menu">
@@ -314,7 +315,7 @@
             </div>
             <div class="form-group">
               <label for="form-message">Message</label>
-              <textarea id="form-message" placeholder="Your message here..." required></textarea>
+              <textarea id="form-message" placeholder="Your message here..."></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
               Send Message ✦
@@ -331,7 +332,20 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <p class="footer-copy">© 2025 <span id="footer-name">Your Name</span>. All rights reserved.</p>
+        <p class="footer-copy">
+          © 2025 <span id="footer-name">Your Name</span>. All rights reserved.
+          <!--
+            Hidden admin-login trigger. Deliberately near-invisible:
+            no title/tooltip, no hover-reveal, blends into the text color.
+            It's still a real, focusable, keyboard-reachable button (Tab
+            will land on it) so it's not an accessibility dead-end —
+            it just isn't visually announced to casual visitors.
+          -->
+          <button
+            id="btn-admin-login"
+            aria-label="Site admin login"
+            style="background:none;border:none;padding:2px 6px;margin:0;font-size:0.6rem;line-height:1;color:inherit;opacity:0.08;cursor:default;">·</button>
+        </p>
         <p class="footer-made">Built with ❤️ &amp; ☕ · Dark Luxury Theme</p>
       </div>
     </div>
@@ -584,12 +598,16 @@
         <h3 class="modal-title">🔒 Admin Access</h3>
         <button class="modal-close" onclick="closeModal('modal-admin-login')">✕</button>
       </div>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;">Enter your admin password to enable editing controls.</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;">Sign in with your admin email and password to enable editing controls.</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="admin-email-input" placeholder="you@example.com" />
+      </div>
       <div class="form-group">
         <label>Password</label>
         <input type="password" id="admin-password-input" placeholder="Enter password…" />
       </div>
-      <div id="admin-login-error" style="color:#e05a7a;font-size:0.78rem;margin-top:-10px;margin-bottom:10px;display:none;">Incorrect password. Try again.</div>
+      <div id="admin-login-error" style="color:#e05a7a;font-size:0.78rem;margin-top:-10px;margin-bottom:10px;display:none;">Incorrect email or password.</div>
       <div class="modal-footer">
         <button class="btn btn-ghost" onclick="closeModal('modal-admin-login')">Cancel</button>
         <button class="btn btn-primary" id="btn-admin-confirm">Unlock ✦</button>
@@ -598,6 +616,7 @@
   </div>
 
   <!-- ── JS ── -->
-  <script src="main.js"></script>
+  <!-- type="module" is required for the Firebase imports in main.js to work -->
+  <script type="module" src="main.js"></script>
 </body>
 </html>
